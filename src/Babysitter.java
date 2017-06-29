@@ -5,13 +5,13 @@ public class Babysitter {
 
     public double getPay(LocalDateTime startTime, LocalDateTime endTime) {
         double payment = 0;
-        for (LocalDateTime i = startTime; i.isBefore(endTime); i =  i.plus(15, ChronoUnit.MINUTES)) {
-            if (i.isBefore(LocalDateTime.of(2000, 1, 1, 20, 59))) {
-                payment += 2.5;
-            } else if (i.isBefore(LocalDateTime.of(2000, 1, 1, 23, 59))) {
-                payment += 3.75;
+        for (LocalDateTime i = startTime; i.isBefore(endTime); i =  i.plus(Consts.QUARTER_HOUR, ChronoUnit.MINUTES)) {
+            if (i.isBefore(Consts.NINE_OCLOCK_PM)) {
+                payment += Consts.EARLY_PAY / 4;
+            } else if (i.isBefore(Consts.MIDNIGHT)) {
+                payment += Consts.MIDDLE_PAY / 4;
             } else {
-                payment += 5;
+                payment += Consts.LATE_PAY / 4;
             }
         }
         return payment;
