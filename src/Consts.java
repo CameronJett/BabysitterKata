@@ -5,7 +5,7 @@ public final class Consts {
     public static final int MONTH = 1;
     public static final int DAY = 1;
 
-    public static final int QUARTER_HOUR = 15;
+    public static final int MINUTE = 1;
 
     public static final LocalDateTime BASE_TIME = LocalDateTime.of(YEAR, MONTH, DAY, 0, 0);
     public static final LocalDateTime NINE_OCLOCK_PM = LocalDateTime.of(YEAR, MONTH, DAY, 21, 0);

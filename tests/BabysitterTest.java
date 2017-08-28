@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class BabysitterTest {
     Babysitter sitter = new Babysitter();
