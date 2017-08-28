@@ -54,5 +54,4 @@ public class BabysitterTest {
     public void whenBabySitterWorksFromFiveToFiveThirtyTheyArePaidFiveDollars() {
         assertEquals(Consts.EARLY_PAY / 2, sitter.getPay(time.plusHours(17), time.plus((60*17 + 30), ChronoUnit.MINUTES)));
     }
-
 }

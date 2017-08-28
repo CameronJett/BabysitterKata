@@ -6,6 +6,7 @@ public class Babysitter {
 
     public double getPay(LocalDateTime startTime, LocalDateTime endTime) {
         BigDecimal payment = new BigDecimal(0);
+
         for (LocalDateTime i = startTime; i.isBefore(endTime); i =  i.plus(Consts.MINUTE, ChronoUnit.MINUTES)) {
             if (i.isBefore(Consts.NINE_OCLOCK_PM)) {
                 payment = calculatePay(payment, Consts.EARLY_PAY, Consts.MINUTES_PER_HOUR);
@@ -21,6 +22,4 @@ public class Babysitter {
     private BigDecimal calculatePay(BigDecimal currentPayment, double ratePerHour, int time) {
         return currentPayment.add(new BigDecimal(ratePerHour / time));
     }
-
-
 }
