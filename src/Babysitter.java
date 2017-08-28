@@ -5,16 +5,22 @@ import java.time.temporal.ChronoUnit;
 public class Babysitter {
 
     public double getPay(LocalDateTime startTime, LocalDateTime endTime) {
-        BigDecimal pay = new BigDecimal(0);
+        BigDecimal payment = new BigDecimal(0);
         for (LocalDateTime i = startTime; i.isBefore(endTime); i =  i.plus(Consts.MINUTE, ChronoUnit.MINUTES)) {
             if (i.isBefore(Consts.NINE_OCLOCK_PM)) {
-                pay = pay.add(new BigDecimal(Consts.EARLY_PAY / 60));
+                payment = calculatePay(payment, Consts.EARLY_PAY, Consts.MINUTES_PER_HOUR);
             } else if (i.isBefore(Consts.MIDNIGHT)) {
-                pay = pay.add(new BigDecimal(Consts.MIDDLE_PAY / 60));
+                payment = calculatePay(payment, Consts.MIDDLE_PAY, Consts.MINUTES_PER_HOUR);
             } else {
-                pay = pay.add(new BigDecimal(Consts.LATE_PAY / 60));
+                payment = calculatePay(payment, Consts.LATE_PAY, Consts.MINUTES_PER_HOUR);
             }
         }
-        return pay.doubleValue();
+        return payment.doubleValue();
     }
+
+    private BigDecimal calculatePay(BigDecimal currentPayment, double ratePerHour, int time) {
+        return currentPayment.add(new BigDecimal(ratePerHour / time));
+    }
+
+
 }
